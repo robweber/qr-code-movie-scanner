@@ -9,7 +9,7 @@ import urllib.parse
 # generates a qr code for the given title
 def create_qr_code(base_url, title):
 
-    qr = qrcode.QRCode(version=3)
+    qr = qrcode.QRCode(version=1)
     qr.add_data(f"{base_url}?title={ urllib.parse.quote_plus(title) }")
     qr.make(fit=True)
     img = qr.make_image(fill='black', back_color='white')
