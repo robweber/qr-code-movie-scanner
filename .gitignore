@@ -1,5 +1,4 @@
-images/*.png
-config.php
+web/config.php
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
