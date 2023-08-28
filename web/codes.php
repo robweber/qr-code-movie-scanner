@@ -21,6 +21,9 @@
         <td width="33%" align="center">
           <img src="qrcode.php?s=qr&t=<?php echo trim($f) ?>&d=<?php echo $base_url ?>" />
           <h3><?php echo trim($f) ?></h3>
+          <?php if($DEBUG_MODE): ?>
+          <p><a href="<?php echo $base_url ?><?php echo trim($f) ?>"><?php echo $base_url ?><?php echo trim($f) ?></a></p>
+          <?php endif ?>
         </td>
         <?php $col ++ ?>
       <?php endif; ?>

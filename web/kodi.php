@@ -23,7 +23,13 @@ class KodiComm {
     }
   }
 
-  public function callMethod($method, $params){
+  public function isPlaying(){
+    $result = $this->callMethod("Player.GetActivePlayers");
+
+    return count($result['result']) > 0;
+  }
+
+  public function callMethod($method, $params=array()){
 
     // create the JSON-RPC call
     $json_obj = array('jsonrpc'=>'2.0', 'id'=>'1', 'method'=>$method, 'params'=>$params);
