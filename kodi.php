@@ -7,7 +7,7 @@ class KodiComm {
 
   public function __construct($debug=False){
     include('config.php');
-    $this->url = "http://" . $KODI_ADDRESS . "/jsonrpc";
+    $this->url = "http://" . $KODI_ADDRESS . ":" . $KODI_PORT . "/jsonrpc";
     $this->debug = $debug;
   }
 
@@ -50,7 +50,7 @@ class KodiComm {
       echo $content;
       echo "<br />";
     }
-    
+
     return json_decode($content, true);
   }
 }
