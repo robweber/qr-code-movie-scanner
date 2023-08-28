@@ -13,7 +13,7 @@
 
       if($result['result']['limits']['total'] == 1)
       {
-        $kodi->callMethod('Player.Open', array('item'=>array('file'=>$result['result']['movies'][0]['file'])));
+        //$kodi->callMethod('Player.Open', array('item'=>array('file'=>$result['result']['movies'][0]['file'])));
       ?>
       <h2>Playing <?php echo htmlspecialchars($_GET["title"]) ?></h2>
       <?php

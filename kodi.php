@@ -11,6 +11,18 @@ class KodiComm {
     $this->debug = $debug;
   }
 
+  public function getMovies(){
+    $result = $this->callMethod("VideoLibrary.GetMovies", array("properties"=>array("title"),'sort'=>array('order'=>'ascending', 'method'=>'title')));
+
+    if($result['result']['limits']['total'] > 0)
+    {
+      return $result['result']['movies'];
+    }
+    else {
+      return array();
+    }
+  }
+
   public function callMethod($method, $params){
 
     // create the JSON-RPC call
