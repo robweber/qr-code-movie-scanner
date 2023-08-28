@@ -1,19 +1,23 @@
 <?php
+  include('config.php');
   require('kodi.php');
 ?>
 <html>
   <head>
     <title>Scanner</title>
   </head>
-  <body>
+  <body align="center">
     <?php
-      $kodi = new KodiComm(true);
+      $kodi = new KodiComm($DEBUG_MODE);
 
       $result = $kodi->callMethod('VideoLibrary.GetMovies', array('properties'=>array('title', 'runtime', "file"), 'filter'=>array('operator'=>'is','field'=>'title','value'=>$_GET['title'])));
 
       if($result['result']['limits']['total'] == 1)
       {
-        //$kodi->callMethod('Player.Open', array('item'=>array('file'=>$result['result']['movies'][0]['file'])));
+        if(!$DEBUG_MODE)
+        {
+          $kodi->callMethod('Player.Open', array('item'=>array('file'=>$result['result']['movies'][0]['file'])));
+        }
       ?>
       <h2>Playing <?php echo htmlspecialchars($_GET["title"]) ?></h2>
       <?php

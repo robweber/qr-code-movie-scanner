@@ -30,6 +30,7 @@ class KodiComm {
 
     if($this->debug)
     {
+      echo "<h3>JSON-RPC request:</h3>";
       echo json_encode($json_obj);
       echo "<br />";
     }
@@ -59,6 +60,7 @@ class KodiComm {
 
     if($this->debug)
     {
+      echo "<h3>JSON-RPC response:</h3>";
       echo $content;
       echo "<br />";
     }
