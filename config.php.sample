@@ -1,0 +1,5 @@
+<?php
+
+$KODI_ADDRESS = "localhost";
+
+?>
