@@ -12,7 +12,7 @@ class KodiComm {
   }
 
   public function getMovies(){
-    $result = $this->callMethod("VideoLibrary.GetMovies", array("properties"=>array("title"),'sort'=>array('order'=>'ascending', 'method'=>'title')));
+    $result = $this->callMethod("VideoLibrary.GetMovies", array("properties"=>array("title"),'sort'=>array('ignorearticle'=>true, 'order'=>'ascending', 'method'=>'title')));
 
     if($result['result']['limits']['total'] > 0)
     {
