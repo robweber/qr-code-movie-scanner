@@ -7,7 +7,7 @@
     <title>Scanner</title>
   </head>
   <body align="center">
-    <?php if(hash('sha256', $SECURITY_CODE) == $_GET['security']): ?>
+    <?php if(hash('sha256', $SECURITY_CODE . $_GET['title']) == $_GET['security']): ?>
     <?php
       $kodi = new KodiComm($DEBUG_MODE);
 

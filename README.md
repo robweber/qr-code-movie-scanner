@@ -46,9 +46,9 @@ Copy the `config.php.sample` file to `web/config.php` and edit the contents. Des
 * KODI_PORT - port the Kodi JSON server is running on
 * OVERRIDE_PLAYING - true/false variable. When set to true scanning a QR code will play media on Kodi even if something is already playing.
 * QR_BASE_URL - the base url to the `index.php` script, set this to whatever URL scheme you're using. This is used as the base url for the QR code generation
-* SECURITY_CODE - an additional code appended to all generated QR codes (sha256 hashed). This is checked when scanning and must match for playback to trigger.
+* SECURITY_CODE - an additional code appended to all generated QR codes (sha256 hash of this + movie title). This is checked when scanning and must match for playback to trigger.
 
-_Notes on the security code:_ The idea behind this was to add a way to avoid abuse since the URLs are pretty easy to generate. Anyone could easily load up a browser and trigger playback. The security code is a quick check that it's a valid query. Once you've generated QR codes and affixed them do not change this value or all QR codes will stop working.
+_Notes on the security code:_ The idea behind this was to add a way to avoid abuse since the URLs are pretty easy to generate. Anyone could easily load up a browser and trigger playback maliciously. The security code is a quick check that it's a valid query. Once you've generated QR codes and affixed them do not change this value or all QR codes will stop working.
 
 ## Usage
 
@@ -67,7 +67,7 @@ $SECURITY_CODE = "1234"
 
 ```
 
-Assuming a movie title of __Inception__ the generated URL for that title would be: `http://192.168.1.100/movie-scanner/index.php?security=03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4&title=Inception`.
+Assuming a movie title of __Inception__ the generated URL for that title would be: `http://192.168.1.100/movie-scanner/index.php?security=4fe686b94ac81e745e13a5fe75e9dc06bce3ffac5448e02f4a7c1b616fb413b9&title=Inception`.
 
 ### Using QR Codes
 
