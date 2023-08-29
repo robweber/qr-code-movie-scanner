@@ -56,7 +56,7 @@ _Notes on the security code:_ The idea behind this was to add a way to avoid abu
 
 To create a QR code load the `generator.php` script. When configured properly this will query your Kodi instances and show two boxes. All movies listed in the top box exist in your Kodi media center. Select the titles you want to generate QR codes for and click "Add" to add them to the bottom box. You can also remove titles by selecting them in the top box and clicking "remove". When you have all the titles selected click the Generate button.
 
-On the codes page you should see a grid of QR codes along with the title of the movie. In debug mode you'll also see the link embedded in the QR code below the title. This is helpful when testing that your codes will work properly prior to printing anything. Links are generated in the format `{$QR_BASE_URL}?security={$SECURITY_CODE}&title={MOVIE_TITLE}`.
+On the codes page you should see a grid of QR codes along with the title of the movie. These can be easily printed and affixed on DVD cases or wherever you'd like them. In debug mode you'll also see the link embedded in the QR code below the title. This is helpful when testing that your codes will work properly prior to printing anything. Links are generated in the format `{$QR_BASE_URL}?security={$SECURITY_CODE}&title={MOVIE_TITLE}`.
 
 __Example__
 ```
