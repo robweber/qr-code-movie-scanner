@@ -11,7 +11,9 @@
     <?php
       $kodi = new KodiComm($DEBUG_MODE);
 
-      $result = $kodi->callMethod('VideoLibrary.GetMovies', array('properties'=>array('title', 'runtime', "file", "resume"), 'filter'=>array('operator'=>'is','field'=>'title','value'=>$_GET['title'])));
+      $result = $kodi->callMethod('VideoLibrary.GetMovies', array('properties'=>array('title', 'runtime', "file", "resume"),
+                                  'filter'=>array('and'=>array(array('operator'=>'is','field'=>'title','value'=>$_GET['title']),
+                                                               array('operator'=>'is','field'=>'year','value'=>$_GET['year'])))));
 
       if($result['result']['limits']['total'] == 1)
       {
@@ -24,20 +26,20 @@
           }
 
         ?>
-        <h2>Playing <?php echo htmlspecialchars($_GET["title"]) ?></h2>
+        <h2>Playing <?php echo htmlspecialchars($_GET["title"]) ?> (<?php echo $_GET['year'] ?>)</h2>
         <?php
         }
         else
         {
         ?>
-        <h2>Cannot play <?php echo htmlspecialchars($_GET["title"]) ?>, playback in progress</h2>
+        <h2>Cannot play <?php echo htmlspecialchars($_GET["title"]) ?> (<?php echo $_GET['year'] ?>), playback in progress</h2>
         <?php
         }
       }
       else
       {
     ?>
-    <h2><?php echo htmlspecialchars($_GET["title"]) ?> cannot be found</h2>
+    <h2><?php echo htmlspecialchars($_GET["title"]) ?> (<?php echo $_GET['year'] ?>) cannot be found</h2>
     <?php
       }
     ?>

@@ -35,7 +35,7 @@
         <?php $movies = $kodi->getMovies(); ?>
         <select id="all_titles" name="all_titles" size="15">
           <?php foreach($movies as $m): ?>
-          <option value="<?php echo $m['title'] ?>"><?php echo $m['title'] ?></option>
+          <option value="<?php echo $m['title'] ?>|<?php echo $m['year'] ?>"><?php echo $m['title'] ?> - <?php echo $m['year'] ?></option>
         <?php endforeach ?>
         </select>
       </div>

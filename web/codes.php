@@ -17,12 +17,15 @@
       <tr valign="center">
       <?php endif ?>
       <?php if(!empty(trim($f))): ?>
+        <?php $f_split = explode("|", trim($f)) ?>
         <td width="33%" align="center">
-          <?php $hash = hash("sha256", $SECURITY_CODE . trim($f)); ?>
-          <img src="qrcode.php?s=qr&t=<?php echo trim($f) ?>&d=<?php echo $QR_BASE_URL ?>&c=<?php echo $hash ?>" />
-          <h3><?php echo trim($f) ?></h3>
+          <?php $hash = hash("sha256", $SECURITY_CODE . trim($f_split[0])); ?>
+          <img src="qrcode.php?s=qr&t=<?php echo trim($f_split[0]) ?>&d=<?php echo $QR_BASE_URL ?>&c=<?php echo $hash ?>&y=<?php echo $f_spli[1] ?>" />
+          <h3><?php echo trim($f_split[0]) ?> (<?php echo $f_split[1] ?>)</h3>
           <?php if($DEBUG_MODE): ?>
-          <p><a href="<?php echo $QR_BASE_URL ?>?security=<?php echo $hash ?>&title=<?php echo trim($f) ?>"><?php echo $QR_BASE_URL ?>?security=<?php echo $hash ?>&title=<?php echo trim($f) ?></a></p>
+          <p><a href="<?php echo $QR_BASE_URL ?>?security=<?php echo $hash ?>&title=<?php echo trim($f_split[0]) ?>&year=<?php echo $f_split[1]?>">
+              <?php echo $QR_BASE_URL ?>?security=<?php echo $hash ?>&title=<?php echo trim($f_split[0]) ?>&year=<?php echo $f_split[1] ?>
+          </a></p>
           <?php endif ?>
         </td>
         <?php $col ++ ?>
