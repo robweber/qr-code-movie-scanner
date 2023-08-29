@@ -11,13 +11,16 @@
   <script type="text/javascript">
   function addTitle(){
     var selectedT = $('#all_titles').val();
-    $('#selected_titles').val($('#selected_titles').val() + selectedT + "\n");
+    var splitT = selectedT.split('|');
+    $('#selected_titles').append(new Option(splitT[0] + " - " + splitT[1],selectedT));
   }
   function removeTitle(){
-    var selectedT = $('#all_titles').val();
-    var currentText = $('#selected_titles').val();
-
-    $('#selected_titles').val(currentText.replace(selectedT + "\n",""));
+    $('#selected_titles option:selected').remove();
+  }
+  function selectAll(){
+    $('#selected_titles option').each(function () {
+            $(this).attr('selected', true);
+        });
   }
   </script>
   <style type="text/css">
@@ -30,7 +33,7 @@
   </style>
   <body>
     <p align="center">Select movie titles from the list below and click Generate to create QR codes for each.</p>
-    <form action="codes.php" method="post" enctype="application/x-www-form-urlencoded">
+    <form action="codes.php" method="post" enctype="application/x-www-form-urlencoded" onSubmit="selectAll()">
       <div align="center">
         <?php $movies = $kodi->getMovies(); ?>
         <select id="all_titles" name="all_titles" size="15">
@@ -44,7 +47,7 @@
         <button id="remove_title" type="button" onClick="removeTitle()">Remove</button>
       </div>
       <div align="center">
-        <textarea id="selected_titles" name="selected_titles" rows="15" cols="40" readonly></textarea>
+        <select id="selected_titles" name="selected_titles[]" size="15" multiple="multiple"></select>
       </div>
       <div align="center">
         <button type="submit">Generate</button>
