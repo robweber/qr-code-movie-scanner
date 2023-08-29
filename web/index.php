@@ -7,6 +7,7 @@
     <title>Scanner</title>
   </head>
   <body align="center">
+    <?php if(password_verify($SECURITY_CODE, $_GET['security'])): ?>
     <?php
       $kodi = new KodiComm($DEBUG_MODE);
 
@@ -40,10 +41,6 @@
     <?php
       }
     ?>
+  <?php endif ?>
   </body>
 </html>
-<?php
-
-
-
-?>

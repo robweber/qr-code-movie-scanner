@@ -7,7 +7,7 @@
       include('config.php');
       $col = 0;
       $max_col = 3;
-      $base_url = $QR_BASE_URL . "?title=";
+      $base_url = $QR_BASE_URL . "?security=" . password_hash($SECURITY_CODE,PASSWORD_DEFAULT) . "&title=";
 
       // get all titles from textarea
       $all_titles = explode("\n", $_POST['selected_titles']);
