@@ -26,20 +26,20 @@
           }
 
         ?>
-        <h2>Playing <?php echo htmlspecialchars($_GET["title"]) ?> (<?php echo $_GET['year'] ?>)</h2>
+        <h2>Playing <?= htmlspecialchars($_GET["title"]) ?> (<?= $_GET['year'] ?>)</h2>
         <?php
         }
         else
         {
         ?>
-        <h2>Cannot play <?php echo htmlspecialchars($_GET["title"]) ?> (<?php echo $_GET['year'] ?>), playback in progress</h2>
+        <h2>Cannot play <?= htmlspecialchars($_GET["title"]) ?> (<?= $_GET['year'] ?>), playback in progress</h2>
         <?php
         }
       }
       else
       {
     ?>
-    <h2><?php echo htmlspecialchars($_GET["title"]) ?> (<?php echo $_GET['year'] ?>) cannot be found</h2>
+    <h2><?= htmlspecialchars($_GET["title"]) ?> (<?= $_GET['year'] ?>) cannot be found</h2>
     <?php
       }
     ?>
