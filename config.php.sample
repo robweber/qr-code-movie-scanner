@@ -1,9 +1,17 @@
 <?php
 
 $DEBUG_MODE = false;  // prints debug information and does not play video on Kodi
+
+// Kodi information
 $KODI_ADDRESS = "localhost";
 $KODI_PORT = "8080";
-$OVERRIDE_PLAYING = false;  //controls if scan will override currently playing Kodi content
+
+// QR Code Generation
 $QR_BASE_URL = "http://localhost/index.php";
 $SECURITY_CODE = "1234";
+$TOTAL_COLS = 4;  // how many columns for the QR code table
+$QR_SIZE = 125;  // size of the generated QR code, in pixels
+
+// Playback settings
+$OVERRIDE_PLAYING = false;  //controls if scan will override currently playing Kodi content
 ?>
