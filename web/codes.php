@@ -3,8 +3,9 @@ include('config.php');
 session_start();
 
 $col = 0;
-// get all titles 
+// get all titles
 $all_titles = $_POST['selected_titles'];
+sort($all_titles);
 $_SESSION['prev_selected'] = $all_titles;
 ?>
 <html>
