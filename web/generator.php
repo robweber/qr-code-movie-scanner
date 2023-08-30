@@ -1,5 +1,6 @@
 <?php
   require('kodi.php');
+  session_start();
 
   $kodi = new KodiComm(false);
 ?>
@@ -47,7 +48,12 @@
         <button id="remove_title" type="button" onClick="removeTitle()">Remove</button>
       </div>
       <div align="center">
-        <select id="selected_titles" name="selected_titles[]" size="15" multiple="multiple"></select>
+        <select id="selected_titles" name="selected_titles[]" size="15" multiple="multiple">
+          <?php foreach($_SESSION['prev_selected'] as $f): ?>
+          <?php $f_split = explode("|", trim($f)) ?>
+          <option value="<?= trim($f) ?>"><?= $f_split[0] ?> - <?= $f_split[1] ?></option>
+          <?php endforeach ?>
+        </select>
       </div>
       <div align="center">
         <button type="submit">Generate</button>

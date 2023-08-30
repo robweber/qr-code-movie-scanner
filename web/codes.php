@@ -1,14 +1,17 @@
+<?php
+include('config.php');
+session_start();
+
+$col = 0;
+// get all titles 
+$all_titles = $_POST['selected_titles'];
+$_SESSION['prev_selected'] = $all_titles;
+?>
 <html>
   <head>
     <title>Generated QR Codes</title>
   </head>
   <body>
-    <?php
-      include('config.php');
-      $col = 0;
-      // get all titles from textarea
-      $all_titles = $_POST['selected_titles'];
-    ?>
     <table width="100%" cellPadding="2">
       <?php foreach($all_titles as $f): ?>
       <?php if($col == 0): ?>
