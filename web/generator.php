@@ -28,7 +28,7 @@
   div {
     margin-bottom: 10px;
   }
-  select option {
+  select, select option {
     width: 300px;
   }
   </style>
