@@ -4,6 +4,10 @@ This project integrates your [Kodi library](https://kodi.tv) with a QR code gene
 
 ## Background
 
+This project was just a fun way to tie a physical DVD movie collection together with a digital media player. Like a lot of people I make backups of my physical DVDs so I can play them on demand via media center software. In my case I use [Kodi](https://kodi.tv). Using this QR Code generator/scanner I can print QR codes for all the physical cases that will play back the digital file when scanned.
+
+For a full write up of how this project was concieved and created there is more information on my [Github.io site](https://robweber.github.io/smarthome/coding/qr_code_media_player/).
+
 ## Install
 
 Before installation this assumes you have a working Apache with PHP web server up and running. This was tested on Linux but in theory any OS that can meet the requirements would work. Additionally for the Kodi integration to work you'll have to have [enabled web server access](https://kodi.wiki/view/Settings/Services/Control#Allow_remote_control_via_HTTP) on your Kodi device.
@@ -44,9 +48,8 @@ Copy the `config.php.sample` file to `web/config.php` and edit the contents. Des
 ```
 $DEBUG_MODE = false;  // prints debug information and does not play video on Kodi when code scanned. Enable for testing.
 
-// Kodi information
-$KODI_ADDRESS = "localhost"; // the IP address of your Kodi player
-$KODI_PORT = "8080"; // port the Kodi JSON server is running on
+// Kodi information, can have more than one device ("name"=>"ip:port")
+$KODI_ADDRESS = array("default"=>"localhost:8080"); // must have at least one
 
 // QR Code Generation
 $QR_BASE_URL = "http://localhost/index.php"; // the base url to the `index.php` script. This is used as the base url for the QR code generation
@@ -89,6 +92,12 @@ Scanning a QR Code will launch the `index.php` script. This script will perform 
 4. Finally, playback of the movie is executed on the media center.
 
 When the `DEBUG_MODE` variable is set to true step #4 is not executed. Additionally the Kodi JSON-RPC calls are displayed along with their responses.
+
+### Multiple Kodi Instances
+
+If you have more than one media center in your home it is possible to put multiple Kodi instances in the `$KODI_ADDRESS` array. Each of these should be in the format `"name"=>"IP:PORT"`. When using the QR generator the __first instance__ in the array will be used to pull in the movie listing.
+
+When scanning a QR code a drop down list will be shown to select which instance you want to use for playback. Hitting submit will start playback on that media center. If only one media center is available playback will automatically start on that device. 
 
 ## Thanks
 

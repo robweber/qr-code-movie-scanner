@@ -5,9 +5,8 @@ class KodiComm {
   private $url = null;  // kodi url
   private $debug = False;
 
-  public function __construct($debug=False){
-    include('config.php');
-    $this->url = "http://" . $KODI_ADDRESS . ":" . $KODI_PORT . "/jsonrpc";
+  public function __construct($kodi_address, $debug=False){
+    $this->url = "http://" . $kodi_address . "/jsonrpc";
     $this->debug = $debug;
   }
 

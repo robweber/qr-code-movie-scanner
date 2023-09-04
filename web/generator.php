@@ -1,8 +1,9 @@
 <?php
+  include('config.php');
   require('kodi.php');
   session_start();
 
-  $kodi = new KodiComm(false);
+  $kodi = new KodiComm($KODI_ADDRESS[array_key_first($KODI_ADDRESS)], false);
 ?>
 <html>
   <head>
